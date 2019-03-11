@@ -30,41 +30,34 @@
 %%%%%%%%%Colors%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
+\definecolor{colorone}{HTML}{E7E7E7} 
+\definecolor{colortwo}{HTML}{ebebeb}
+\definecolor{colorthree}{HTML}{efefef} 
+\definecolor{colorfour}{HTML}{f4f4f4} 
+%\definecolor{colorfive}{HTML}{f8f8f8} 
+\definecolor{colorfive}{HTML}{fcfcfc} 
+
+\definecolor{darkblue}{RGB}{0,80,130}
+\colorlet{thirdcol}{darkblue}
+
 %%% Set de couleurs choisies pour le CV
 \definecolor{lapislazuli}{HTML}{2a7a9c} 
 \definecolor{alloyorange}{HTML}{d16014} 
 \definecolor{yellowmunsell}{HTML}{efca08} 
 \definecolor{palegreen}{HTML}{aef78e} 
+\definecolor{darkestblue}{RGB}{0,50,80}
 %%%
 
-\definecolor{colorone}{HTML}{E7E7E7} 
-\definecolor{colortwo}{HTML}{ebebeb}
-\definecolor{colorthree}{HTML}{efefef} 
-\definecolor{colorfour}{HTML}{f4f4f4} 
-\definecolor{colorfive}{HTML}{f8f8f8} 
-\definecolor{colorfive}{HTML}{fcfcfc} 
+\colorlet{c1}{alloyorange}
+\colorlet{c2}{yellowmunsell}
+\colorlet{c3}{palegreen}
 
-\definecolor{orange}{RGB}{255,150,0}
-\definecolor{lblue}{RGB}{0,178,255}
-\definecolor{darkblue}{RGB}{0,80,130}
-\definecolor{darkerblue}{RGB}{0,100,160}
-\definecolor{lgray}{RGB}{0,120,200}
-\definecolor{powderblue}{RGB}{190,220,255}
-\definecolor{darkestblue}{RGB}{0,50,80}
-
-\colorlet{maincol}{orange}
-
-\colorlet{secondcol}{lblue}
-\colorlet{thirdcol}{darkblue}
-\colorlet{fourthcol}{darkerblue}
-\colorlet{fifthcol}{lgray}
-\colorlet{sixthcol}{darkblue}
-
-\colorlet{textcol}{darkestblue}
+\colorlet{Back}{white!100}
+\colorlet{bb}{lapislazuli}
 
 \colorlet{titletext}{white}
+\colorlet{textcol}{darkestblue}
 
-\colorlet{sectcol}{white}
 
 
 
@@ -103,13 +96,13 @@
 \newcolumntype{F}{>{\raggedright\arraybackslash}X}
 
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=1pt, fill=lapislazuli,lapislazuli,text=white] (char) {#1};}}
+            \node[shape=circle,draw,inner sep=1pt, fill=bb,bb,text=white] (char) {#1};}}
 
 % create a coloured box with arrow and title as cv section headline
 % param 1: section title
 %
 \newcommand{\cvsection}[2] {
-	\textcolor{sectcol}{\uppercase{\textbf{#1}}}
+	\textcolor{titletext}{\uppercase{\textbf{#1}}}
 }
 
 \newcommand{\cvsect}[4]{
@@ -172,13 +165,13 @@
 % param 3:  color
 \newcommand{\legend}[3]{
 	\FPifeq{#1}{3}
-		\node [text width=3.4cm, align=center] at (180:\outerradius + 5pt) {#2};
+		\node [text width=3.4cm, align=center,text=textcol] at (180:\outerradius + 5pt) {#2};
     \else
     	\FPifeq{#1}{4}
     	\else
     		\FPifeq{#1}{5}
 		        \draw [*-,thin,#3] 
-		          node [rounded corners=5pt,very thick,draw=#3, fill=gray!70, text=white, text width=\unitheight/2,minimum height=\unitheight/3, align=center] 
+		          node [rounded corners=5pt,very thick,draw=#3, fill=Back, text=textcol, text width=\unitheight/2,minimum height=\unitheight/3, align=center] 
 		          at (0:\outerradius) [xshift=0 cm,inner sep=0pt, outer sep=0,anchor=south]
 		          {\textbf{#2}};
 
@@ -186,7 +179,7 @@
 		      \pgfmathsetmacro\labelshiftdir{1-2*(-\midangle>180)}
 		      \draw [*-,thin,#3] 
 		        node [ rounded corners=5pt, very thick, draw=#3,
-		                fill=gray!70, text=white, text width=\wid,minimum height=\unitheight - 0.1cm, align=center, 
+		                fill=Back, text=textcol, text width=\wid,minimum height=\unitheight - 0.1cm, align=center, 
 		                append after command={(\midangle:-\midradius pt) -- 
 		                  (\midangle:-\outerradius - 0ex) -- (\tikzlastnode)}] 
 		              at (\midangle:-\outerradius - 0ex) [xshift=\labelshiftdir*0.1cm, %xshift: tailler segment légende
@@ -197,12 +190,13 @@
 
 % param 1:	type bule
 % param 2:	lien image/text pour skills
-\newcommand{\bulle}[2]{
+% param 3:  color
+\newcommand{\bulle}[3]{
 	\FPifeq{#1}{5}
-      \node[circle,minimum size=(\innerradius)*2,fill=gray!30, text=white,align=center,draw=blue!70]{\Large #2};
-      \draw[gray] (0,0) circle (\innerradius);
+      \node[circle,minimum size=(\innerradius)*2,fill=Back, text=textcol,align=center,draw=#3]{\Large #2};
+      \draw[#3] (0,0) circle (\innerradius);
     \else
-      \draw[gray] (0,0) circle (\outerradius) circle (\innerradius);
+      \draw[#3] (0,0) circle (\outerradius) circle (\innerradius);
       \node[circle,minimum size=(\innerradius)*2,draw,path picture={
                \node at (path picture bounding box.center){
                    \includegraphics[width=(\innerradius)*\coef]{#2}
@@ -258,7 +252,7 @@
 
       \end{scope}
 
-      \bulle{#5}{#2}
+      \bulle{#5}{#2}{#4}
 
       \end{tikzpicture}
 }
@@ -388,11 +382,11 @@
 
 \begin{tabularx}{\paperwidth}{HHH}
 	\hspace{\hs}
-	\raisebox{-.4\height}{\wheelchart{100/blue!70,0/white}{\givenskilla}{1}{blue!70}{5}} &
+	\raisebox{-.4\height}{\wheelchart{100/c1,0/white}{\givenskilla}{1}{c1}{5}} &
 	\hspace{\hs}
-	\raisebox{-.4\height}{\wheelchart{100/blue!70,0/white}{\givenskillb}{2}{blue!70}{5}} &
+	\raisebox{-.4\height}{\wheelchart{100/c2,0/white}{\givenskillb}{2}{c2}{5}} &
 	\hspace{\hs}
-	\raisebox{-.4\height}{\wheelchart{100/blue!70,0/white}{\givenskillc}{3}{blue!70}{5}} \\
+	\raisebox{-.4\height}{\wheelchart{100/c3,0/white}{\givenskillc}{3}{c3}{5}} \\
 \end{tabularx}
 \vspace{-0.63cm}
 }
@@ -426,9 +420,9 @@
 \vspace{- 0.18 cm}
 
 \begin{tabularx}{\paperwidth}{HHH}
-	\raisebox{-.4\height}{\wheelchart{100/blue!70}{\givenlogohobbya}{\givenlegendehobbya}{blue!70}{1}} &
-	\raisebox{-.4\height}{\wheelchart{100/blue!70}{\givenlogohobbyb}{\givenlegendehobbyb}{blue!70}{1}} &
-	\raisebox{-.4\height}{\wheelchart{100/blue!70}{\givenlogohobbyc}{\givenlegendehobbyc}{blue!70}{1}} \\
+	\raisebox{-.4\height}{\wheelchart{100/bb}{\givenlogohobbya}{\givenlegendehobbya}{bb}{1}} &
+	\raisebox{-.4\height}{\wheelchart{100/bb}{\givenlogohobbyb}{\givenlegendehobbyb}{bb}{1}} &
+	\raisebox{-.4\height}{\wheelchart{100/bb}{\givenlogohobbyc}{\givenlegendehobbyc}{bb}{1}} \\
 \end{tabularx}
 \vspace{-0.62cm}
 }
@@ -467,10 +461,10 @@
 \vspace{- 0.18 cm}
 
 \begin{tabularx}{\paperwidth}{HHHH}
-	\raisebox{-.4\height}{\wheelchart{100/blue!70,0/white}{\givenlanguagea}{\givenlegendelanguagea}{blue!70}{2}} &
-	\raisebox{-.4\height}{\wheelchart{90/blue!70,10/white}{\givenlanguageb}{\givenlegendelanguageb}{blue!70}{2}} &
-	\raisebox{-.4\height}{\wheelchart{45/blue!70,55/white}{\givenlanguagec}{\givenlegendelanguagec}{blue!70}{2}} &
-	\raisebox{-.4\height}{\wheelchart{35/blue!70,65/white}{\givenlanguaged}{\givenlegendelanguaged}{blue!70}{2}} \\
+	\raisebox{-.4\height}{\wheelchart{100/bb,0/white}{\givenlanguagea}{\givenlegendelanguagea}{bb}{2}} &
+	\raisebox{-.4\height}{\wheelchart{90/bb,10/white}{\givenlanguageb}{\givenlegendelanguageb}{bb}{2}} &
+	\raisebox{-.4\height}{\wheelchart{45/bb,55/white}{\givenlanguagec}{\givenlegendelanguagec}{bb}{2}} &
+	\raisebox{-.4\height}{\wheelchart{35/bb,65/white}{\givenlanguaged}{\givenlegendelanguaged}{bb}{2}} \\
 \end{tabularx}
 \vspace{-0.62cm}
 }
@@ -504,12 +498,12 @@
 \vspace{- 0.18 cm}
 
 \begin{tabularx}{\paperwidth}{HHHHHH}
-	\raisebox{-.4\height}{\wheelchart{85/blue!70,15/white}{\giventoola}{\small ingénierie système }{blue!70}{3}} &
-	\raisebox{-.4\height}{\wheelchart{75/blue!70,25/white}{\giventoolb}{\small CAO }{blue!70}{3}} &
-	\raisebox{-.3\height}{\wheelchart{60/blue!70,40/white}{\giventoolc}{0}{blue!70}{4}} &
-	\raisebox{-.3\height}{\wheelchart{70/blue!70,30/white}{\giventoold}{0}{blue!70}{4}} &
-	\raisebox{-.3\height}{\wheelchart{50/blue!70,50/white}{\giventoole}{0}{blue!70}{4}} &
-	\raisebox{-.4\height}{\hspace{-0.5cm}\wheelchart{90/blue!70,10/white}{\giventoolf}{\small Pack Office}{blue!70}{3}} \\
+	\raisebox{-.4\height}{\wheelchart{85/bb,15/white}{\giventoola}{\small d'ingénierie système }{bb}{3}} &
+	\raisebox{-.4\height}{\wheelchart{75/bb,25/white}{\giventoolb}{\small de CAO }{blue!70}{3}} &
+	\raisebox{-.4\height}{\wheelchart{60/bb,40/white}{\giventoolc}{\small Matlab}{bb}{3}} &
+	\raisebox{-.3\height}{\wheelchart{70/bb,30/white}{\giventoold}{0}{bb}{4}} &
+	\raisebox{-.3\height}{\wheelchart{50/bb,50/white}{\giventoole}{0}{bb}{4}} &
+	\raisebox{-.4\height}{\hspace{-0.5cm}\wheelchart{90/bb,10/white}{\giventoolf}{\small Pack Office}{bb}{3}} \\
 \end{tabularx}
 }
 	%\raisebox{-.3\height}{\wheelchart{90/blue!70,10/white}{\giventoolf}{0}{blue!70}{4}}
@@ -587,22 +581,38 @@
 % param 4:	variation horizontale
 % param 5:	variation hauteur
 \newcommand{\connect}[5]{
+	\ifdim#5pt<0pt
+		\pgfmathparse{-#5}
+		\global\let\vh\pgfmathresult
+		\pgfmathparse{-#2}
+		\global\let\cd\pgfmathresult
+
+	\else
+		\pgfmathparse{#5}
+		\global\let\vh\pgfmathresult
+		\pgfmathparse{#2}
+		\global\let\cd\pgfmathresult
+
+	\fi
+
 	\ifnum\nsk=1
 
-		\ifdim#5pt<#2pt%\FPiflt{#5}{#2}
-		\draw[draw=#3, line width=1.5pt] (\side*0.6 + #4, \midexp + #5) -- (\side*0.2 + #4,\midexp + #5);
+		\ifdim\vh pt<#2pt%\FPiflt{#5}{#2}
+		\draw[draw=textcol, line width=1pt] (\side*0.6 + #4, \midexp + #5) -- (\side*0.2 + #4,\midexp + #5);
+
 		\else
-		\draw[draw=#3, line width=1.5pt] (\side*0.6 + #4, \midexp + #5) -- (\side*0.3 + #4,\midexp + #5);
-		\draw[draw=#3, line width=1.5pt] (\side*0.3 + #4, \midexp + #5) -- (\side*0.3 + #4,\midexp + #2);
-		\draw[draw=#3, line width=1.5pt] (\side*0.3 + #4, \midexp + #2) -- (\side*0.2 + #4,\midexp + #2);
+		\draw[draw=textcol, line width=1pt] (\side*0.6 + #4, \midexp + #5) -- (\side*0.35 + #4,\midexp + #5);
+		\draw[draw=textcol, line width=1pt] (\side*0.35 + #4, \midexp + #5) -- (\side*0.35 + #4,\midexp + \cd);
+		\draw[draw=textcol, line width=1pt] (\side*0.35 + #4, \midexp + \cd) -- (\side*0.2 + #4,\midexp + \cd);
+
 		\fi
 
 	\else
 		\draw[white] (0,\startexp) circle (0.3) node{\textsc{\fontsize{10pt}{0}\icon{\faMortarBoard}}};
 
-		\draw[draw=#3, line width=1.5pt] (0.3, \startexp) -- (0.4,\startexp);
-		\draw[draw=#3, line width=1.5pt] (0.4, \startexp + #5) -- (0.6,\startexp + #5);
-		\draw[draw=#3, line width=1.5pt] (0.4, \startexp) -- (0.4,\startexp + #5);
+		\draw[draw=textcol, line width=1pt] (0.3, \startexp) -- (0.4,\startexp);
+		\draw[draw=textcol, line width=1pt] (0.4, \startexp + #5) -- (0.6,\startexp + #5);
+		\draw[draw=textcol, line width=1pt] (0.4, \startexp) -- (0.4,\startexp + #5);
 
 
 	\fi
@@ -617,11 +627,11 @@
 % param 6:	description
 \newcommand{\eexp}[6]{
 	\ifnum\xp=1
-		\draw [*-,thin,#2]
+		\draw [*-,line width=2pt,textcol]
 		  node[rounded corners=2pt, fill=white, draw=#2,minimum height=0.5 , anchor=\anchor, align=left] at (\side*0.6 , \midexp + #3 ) { 
 		  \begin{tabularx}{\paperwidth/5}{L{0.4 cm}C{\paperwidth/5 - 0.8cm}}%RC{\paperwidth/5 - 0.4cm}}
-		  		 \hspace{-5mm}
-			 \includegraphics[width=0.7 cm]{#1} &  \hspace{-10mm} #4\\ %\vspace{-5mm}\hspace{-4mm}
+		  		 
+			 \hspace{-3.55mm}\includegraphics[width=0.7 cm]{#1} &  \hspace{-10mm} #4\\ %\vspace{-5mm}\hspace{-4mm}
 			 \hline
 			 \multicolumn{2}{C{\paperwidth/5}}{\vspace{0.5mm} #5} \\
 			 \hline
@@ -630,7 +640,7 @@
 		  };
 	\else
 		\ifnum\xp=2
-			\draw [*-,thin,#2]
+			\draw [*-,line width=2pt,textcol]
 				  node[rounded corners=2pt, fill=white, draw=#2,minimum height=0.5 ,  anchor=\anchor, align=center] at (\side*0.6 , \midexp + #3 ) { 
 				  \begin{tabularx}{\paperwidth/5}{H}	
 						 #4 \\
@@ -641,18 +651,18 @@
 		\else
 			\ifnum\xp=3
 
-				\draw [*-,thin,#2]
+				\draw [*-,thin,textcol]
 				  node[rounded corners=2pt, fill=white, draw=#2,minimum width=\paperwidth/5, minimum height=0.5 ,  anchor=\anchor] at (\side*0.6 , \startexp + #3 ) { 
 
-				  \begin{tabularx}{\paperwidth/5}{L{0.4 cm}X}
-				  		 \hspace{-5mm}
-						 \includegraphics[width=0.7 cm]{#1} & \vspace{-5mm}\hspace{-4mm} #4\\
+				  \begin{tabularx}{\paperwidth/5}{L{1.1 cm}X}
+				  		 \hspace{-7mm}
+						 \includegraphics[width=1.4 cm]{#1} & \vspace{-7.5mm}\hspace{-4mm} #4\\
 				  \end{tabularx}
 				  };
 
 			\else
 				
-				\draw [*-,thin,#2]
+				\draw [*-,thin,textcol]
 				  node[rounded corners=2pt, fill=white, draw=#2,minimum width=\paperwidth/5, minimum height=0.5 ,  anchor=\anchor] at (0.5 , \startexp ) { 
 
 				  \begin{tabularx}{\paperwidth/5}{C{\paperwidth/5}}
@@ -670,7 +680,7 @@
 % param 3:  numero skill
 \newcommand{\numeroskill}[3]{
 	\ifnum\nsk=1
-		\node [rectangle,rounded corners=2pt, fill=white,text=#1, anchor=\anchor,draw=#1] (box) at (\side*\paperwidth/5 + \side*14,\midexp + #2){\small \textbf #3};
+		\node [rectangle,line width=2pt, rounded corners=2pt, fill=white,text=textcol, anchor=\anchor,draw=#1] (box) at (\side*\paperwidth/5 + \side*14,\midexp + #2){\small \textbf #3};
 	\else
 	\fi
 
@@ -744,7 +754,7 @@
 					\pgfmathparse{#3/\fullrange*((\yeart-#1)+(\montht/12))}
 		  			\global\let\endexp\pgfmathresult
 
-					\draw[draw=##3, line width=1.5pt,\arrrow,\style] (\side*0.2 + \ho, \startexp) -- (\side*0.2 + \ho,\endexp);
+					\draw[draw=textcol, line width=1.5pt,\arrrow,\style] (\side*0.2 + \ho, \startexp) -- (\side*0.2 + \ho,\endexp);
 
 					\pgfmathparse{\endexp}
 					\global\let\startexp\pgfmathresult
@@ -759,8 +769,9 @@
 				\pgfmathparse{0.5*\endexp+0.5*\startexp}
 		  		\global\let\midexp\pgfmathresult
 
-				\pgfmathparse{0.5*\endexp-0.5*\startexp-0.15}
+				\pgfmathparse{0.5*\endexp-0.5*\startexp-0.2}
 				\global\let\cond\pgfmathresult
+
 			\else
 				\pgfmathparse{0}
 		  		\global\let\midexp\pgfmathresult
