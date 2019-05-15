@@ -296,6 +296,7 @@
 \newcommand{\licencetwo}[1]{\renewcommand{\givenlicencetwo}{#1}}
 
 \newcommand{\cvmail}[1]{\renewcommand{\givencvmail}{#1}}
+\newcommand{\linkdin}[1]{\renewcommand{\givenlinkdin}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\givennumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\givencvaddress}{#1}}
 
@@ -310,6 +311,7 @@
 \newcommand{\givenlicencetwo}{}
 
 \newcommand{\givencvmail}{}
+\newcommand{\givenlinkdin}{}
 \newcommand{\givennumberphone}{}
 \newcommand{\givencvaddress}{}
 
@@ -324,7 +326,7 @@
 
 \vspace{- 0.45 cm} %décaler vers le haut le tableau (meilleur visuel)
 
-\begin{tabularx}{\paperwidth}{XC{8.3cm}R} %tableau largeur de la feuille
+\begin{tabularx}{\paperwidth - 0.9 cm}{XC{9cm}R} %tableau largeur de la feuille
 
 	\vspace{- 1.7 cm} %décaler vers le haut la colonne gauche du tableau (meilleur visuel)
 	\setlength{\logowidth}{11.7pt} %défini la taille du logo issu de "bclogo" (un paquet)
@@ -349,12 +351,15 @@
 
 	\begin{tabular}{L{4cm}l} %on ajuste toutes les tailles des icon, p{} pour que le text revienne à la ligne dans les cellules du tableau (ex pour l'adresse)
 		\href{mailto:\givencvmail}{\givencvmail} & \ifthenelse{\equal{\givencvmail}{}}{}{\textsc{\fontsize{15.3pt}{0}\selectfont\icon{\faAt}}\\}
+
+		\href{\givenlinkdin}{Mon Linkedin} & \ifthenelse{\equal{\givenlinkdin}{}}{}{\textsc{\fontsize{15.3pt}{0}\selectfont\icon{\faLinkedin}}\\}
+
 		\givennumberphone & \ifthenelse{\equal{\givennumberphone}{}}{}{\textsc{\fontsize{16.7pt}{0}\icon{\faPhone}}\\}
 		\givencvaddress & \ifthenelse{\equal{\givencvaddress}{}}{}{\textsc{\fontsize{18.3pt}{0}\icon{\faMapMarker}} \\}
 	\end{tabular} \\
 
 \end{tabularx}
-\vspace{ -0.62 cm}
+\vspace{ -0.23 cm}
 }
 
 
@@ -413,7 +418,7 @@
 {
 \begin{center} %on veut donner une couleur de fond au tableau on utilise "center" pour ajuster la reference de tizkpicture
 \begin{tikzpicture}[remember picture,overlay]
-   	 \node [rectangle, fill=colorthree, anchor=north, minimum width=\paperwidth, minimum height=\paperheight/21] (box) at (0cm,0cm){}; %paramètres du rectangle de couleur
+   	 \node [rectangle, fill=colorfour, anchor=north, minimum width=\paperwidth, minimum height=\paperheight/21] (box) at (0cm,0cm){}; %paramètres du rectangle de couleur
 \end{tikzpicture}
 \end{center}
 
@@ -454,7 +459,7 @@
 {
 \begin{center} %on veut donner une couleur de fond au tableau on utilise "center" pour ajuster la reference de tizkpicture
 \begin{tikzpicture}[remember picture,overlay]
-   	 \node [rectangle, fill=colorfour, anchor=north, minimum width=\paperwidth, minimum height=\paperheight/21] (box) at (0cm,0cm){}; %paramètres du rectangle de couleur
+   	 \node [rectangle, fill=colorfive, anchor=north, minimum width=\paperwidth, minimum height=\paperheight/21] (box) at (0cm,0cm){}; %paramètres du rectangle de couleur
 \end{tikzpicture}
 \end{center}
 
@@ -463,10 +468,9 @@
 \begin{tabularx}{\paperwidth}{HHHH}
 	\raisebox{-.4\height}{\wheelchart{100/bb,0/white}{\givenlanguagea}{\givenlegendelanguagea}{bb}{2}} &
 	\raisebox{-.4\height}{\wheelchart{90/bb,10/white}{\givenlanguageb}{\givenlegendelanguageb}{bb}{2}} &
-	\raisebox{-.4\height}{\wheelchart{45/bb,55/white}{\givenlanguagec}{\givenlegendelanguagec}{bb}{2}} &
+	\raisebox{-.4\height}{\wheelchart{65/bb,35/white}{\givenlanguagec}{\givenlegendelanguagec}{bb}{2}} &
 	\raisebox{-.4\height}{\wheelchart{35/bb,65/white}{\givenlanguaged}{\givenlegendelanguaged}{bb}{2}} \\
 \end{tabularx}
-\vspace{-0.62cm}
 }
 
 
@@ -491,7 +495,7 @@
 {
 \begin{center} %on veut donner une couleur de fond au tableau on utilise "center" pour ajuster la reference de tizkpicture
 \begin{tikzpicture}[remember picture,overlay]
-   	 \node [rectangle, fill=colorfive, anchor=north, minimum width=\paperwidth, minimum height=\paperheight/21] (box) at (0cm,0cm){}; %paramètres du rectangle de couleur
+   	 \node [rectangle, fill=colorthree, anchor=north, minimum width=\paperwidth, minimum height=\paperheight/21] (box) at (0cm,0cm){}; %paramètres du rectangle de couleur
 \end{tikzpicture}
 \end{center}
 
@@ -505,6 +509,7 @@
 	\raisebox{-.3\height}{\wheelchart{50/bb,50/white}{\giventoole}{0}{bb}{4}} &
 	\raisebox{-.4\height}{\hspace{-0.5cm}\wheelchart{90/bb,10/white}{\giventoolf}{\small Pack Office}{bb}{3}} \\
 \end{tabularx}
+\vspace{-0.73cm}
 }
 	%\raisebox{-.3\height}{\wheelchart{90/blue!70,10/white}{\giventoolf}{0}{blue!70}{4}}
 
@@ -520,11 +525,11 @@
 \begin{tabularx}{0.1cm}{l}	
 	\rotatebox{70}{\small \textbf{Compétences:}}
 	\rule[-\baseheight/13]{0cm}{\baseheight } \\
-	\rotatebox{70}{\small \textbf{Loisirs:}} 
+	\rotatebox{70}{\small \textbf{Outils:}} 
 	\rule[0cm]{0cm}{\unitheight - 1.5mm}\\
-	\rotatebox{70}{\small \textbf{Langues:}}
+	\rotatebox{70}{\small \textbf{Loisirs:}}
 	\rule[0cm]{0cm}{\unitheight - 1.5mm} \\
-	\rotatebox{70}{\small \textbf{Outils:}}
+	\rotatebox{70}{\small \textbf{Langues:}}
 	\rule[0cm]{0cm}{\unitheight - 1.5mm} \\
 \end{tabularx}
 }
@@ -628,7 +633,7 @@
 \newcommand{\eexp}[6]{
 	\ifnum\xp=1
 		\draw [*-,line width=2pt,textcol]
-		  node[rounded corners=2pt, fill=white, draw=#2,minimum height=0.5 , anchor=\anchor, align=left] at (\side*0.6 , \midexp + #3 ) { 
+		  node[rounded corners=2pt, fill=white, draw=#2,minimum height=0.5 , anchor=\anchor, align=left] at (\side*0.55 , \midexp + #3 ) { 
 		  \begin{tabularx}{\paperwidth/5}{L{0.4 cm}C{\paperwidth/5 - 0.8cm}}%RC{\paperwidth/5 - 0.4cm}}
 		  		 
 			 \hspace{-3.55mm}\includegraphics[width=0.7 cm]{#1} &  \hspace{-10mm} #4\\ %\vspace{-5mm}\hspace{-4mm}
@@ -641,7 +646,7 @@
 	\else
 		\ifnum\xp=2
 			\draw [*-,line width=2pt,textcol]
-				  node[rounded corners=2pt, fill=white, draw=#2,minimum height=0.5 ,  anchor=\anchor, align=center] at (\side*0.6 , \midexp + #3 ) { 
+				  node[rounded corners=2pt, fill=white, draw=#2,minimum height=0.5 ,  anchor=\anchor, align=center] at (\side*0.55 , \midexp + #3 ) { 
 				  \begin{tabularx}{\paperwidth/5}{H}	
 						 #4 \\
 						 \hline
@@ -652,7 +657,7 @@
 			\ifnum\xp=3
 
 				\draw [*-,thin,textcol]
-				  node[rounded corners=2pt, fill=white, draw=#2,minimum width=\paperwidth/5, minimum height=0.5 ,  anchor=\anchor] at (\side*0.6 , \startexp + #3 ) { 
+				  node[rounded corners=2pt, fill=white, draw=#2,minimum width=\paperwidth/5, minimum height=0.5 ,  anchor=\anchor] at (\side*0.55 , \startexp + #3 ) { 
 
 				  \begin{tabularx}{\paperwidth/5}{L{1.1 cm}X}
 				  		 \hspace{-7mm}
@@ -663,7 +668,7 @@
 			\else
 				
 				\draw [*-,thin,textcol]
-				  node[rounded corners=2pt, fill=white, draw=#2,minimum width=\paperwidth/5, minimum height=0.5 ,  anchor=\anchor] at (0.5 , \startexp ) { 
+				  node[rounded corners=2pt, fill=white, draw=#2,minimum width=\paperwidth/5, minimum height=0.5 ,  anchor=\anchor] at (0.5 , \startexp + #3) { 
 
 				  \begin{tabularx}{\paperwidth/5}{C{\paperwidth/5}}
 						 #4
@@ -680,7 +685,7 @@
 % param 3:  numero skill
 \newcommand{\numeroskill}[3]{
 	\ifnum\nsk=1
-		\node [rectangle,line width=2pt, rounded corners=2pt, fill=white,text=textcol, anchor=\anchor,draw=#1] (box) at (\side*\paperwidth/5 + \side*14,\midexp + #2){\small \textbf #3};
+		\node [rectangle,line width=2pt, rounded corners=2pt, fill=white,text=textcol, anchor=\anchor,draw=#1] (box) at (\side*\paperwidth/5 + \side*13,\midexp + #2){\small \textbf #3};
 	\else
 	\fi
 
